@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import certifi
-from motor.motor_asyncio import AsyncIOMotorClientfrom bson import ObjectId
+from motor.motor_asyncio import AsyncIOMotorClient
+from bson import ObjectId
 import os
 from dotenv import load_dotenv
 
