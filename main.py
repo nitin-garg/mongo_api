@@ -1,14 +1,18 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from motor.motor_asyncio import AsyncIOMotorClient
-from bson import ObjectId
+import certifi
+from motor.motor_asyncio import AsyncIOMotorClientfrom bson import ObjectId
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_URI)
+client = AsyncIOMotorClient(
+    MONGO_URI,
+    tls=True,
+    tlsCAFile=certifi.where()
+)
 client_db = client["test_mongo"]
 collection = client_db["student"]
 
